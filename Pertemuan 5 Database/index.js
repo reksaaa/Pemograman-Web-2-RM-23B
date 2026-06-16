@@ -1,16 +1,14 @@
 import express from "express";
+import cors from "cors";
 
 import userController from "./controllers/user.controller.js";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  }),
-);
+app.use(cors({ origin: "*" }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("<h1>Hello World</h1>");
